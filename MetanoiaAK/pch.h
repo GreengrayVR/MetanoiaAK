@@ -13,4 +13,6 @@
 #include <iostream>
 #include <thread>
 
+#include "memory_utils.hpp"
+
 #endif //PCH_H
