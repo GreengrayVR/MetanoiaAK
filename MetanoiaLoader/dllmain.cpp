@@ -1,7 +1,7 @@
 // dllmain.cpp : Defines the entry point for the DLL application.
 #include "pch.h"
+#include "winmm_proxy.h"
 
-#pragma comment(lib, "winmm.lib")
 
 DWORD WINAPI LoaderThread(LPVOID lpParameter)
 {
@@ -39,6 +39,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
+		load_winmm();
 		::CreateThread(0, 0, LoaderThread, 0, 0, 0);
 		break;
     case DLL_THREAD_ATTACH:
