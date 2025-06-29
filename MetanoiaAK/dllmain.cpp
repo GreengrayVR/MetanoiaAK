@@ -2,6 +2,7 @@
 #include "pch.h"
 #include "Console.hpp"
 
+#include "static_lambda/detour_lambda.hpp"
 
 
 bool IsReadableAddress(void* addr, size_t size = sizeof(DWORD)) {
@@ -33,8 +34,7 @@ void __metanoia_main()
 {
     Console console;
 
-    auto func = foff<void* ()>((char*)0x770650);
-    void* stats = func();
+
 
     auto get_string_offset = [](void* address, size_t offset) {
         std::string str;
@@ -55,12 +55,24 @@ void __metanoia_main()
         return str;
     };
 
-    Console::Log("Player '", get_string_offset(stats, 92), "'");
-    Console::Log("Server '", get_string_offset(stats, 64), "'");
+    auto func = foff<void* ()>((char*)0x770650);
+    void* stats = func();
+
+
+    auto replacement = [](auto original, void* _this) -> void*
+    {
+        Console::Log("yes");
+        return original(_this);
+    };
+
+    sl::detour<void*(void*)> a(0x6D3530, replacement);
 
 
     while (true)
     {
+
+        std::cout << get_string_offset(stats, 64) << " " << get_string_offset(stats, 92) << " " << *(float*)0x1E7B8A8 << " " << *(float*)0x1E7B8B0 << " " << *(float*)0x1E7B8AC << std::endl;
+
         if (GetAsyncKeyState(VK_END) & 1)
             break;
 

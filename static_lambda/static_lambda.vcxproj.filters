@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\MetanoiaAK\libs\static_lambda\src\common.hpp" />
+    <ClInclude Include="..\MetanoiaAK\libs\static_lambda\src\detours.h" />
+    <ClInclude Include="..\MetanoiaAK\libs\static_lambda\src\disasm_wrapper.hpp" />
+    <ClInclude Include="..\MetanoiaAK\libs\static_lambda\src\sysapi.hpp" />
+    <ClInclude Include="..\MetanoiaAK\libs\static_lambda\src\windows_types.hpp" />
+    <ClInclude Include="..\MetanoiaAK\libs\static_lambda\include\static_lambda\detour_lambda.hpp" />
+    <ClInclude Include="..\MetanoiaAK\libs\static_lambda\include\static_lambda\static_lambda.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\MetanoiaAK\libs\static_lambda\src\disasm.cpp" />
+    <ClCompile Include="..\MetanoiaAK\libs\static_lambda\src\disasm_wrapper.cpp" />
+    <ClCompile Include="..\MetanoiaAK\libs\static_lambda\src\sysapi.cpp" />
+  </ItemGroup>
+</Project>
